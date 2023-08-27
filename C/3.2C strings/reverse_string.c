@@ -11,11 +11,11 @@ int main() {
    j = strlen(str) - 1;
    
    while (i < j) {
-    temp = str[i];
-    str[i] = str[j];
-    str[j] = temp;
-    i++;
-    j--;
+      temp = str[i];
+      str[i] = str[j];
+      str[j] = temp;
+      i++;
+      j--;
    }
    
    printf("Reverse of the string: %s", str);
