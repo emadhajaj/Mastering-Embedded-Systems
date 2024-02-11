@@ -20,7 +20,7 @@ Welcome to Mastering Embedded Systems! This comprehensive course is divided into
 - [ ] MCU Interfacing
 - [ ] MCU Timers/ADC
 - [ ] Software Engineering
-- [ ] Term 2 Exam (Unscheduled)
+- [ ] Term 2 interview (Unscheduled)
 
 
 ### Term 3
