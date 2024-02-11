@@ -1,0 +1,455 @@
+
+Inturrupt.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000028e  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  000002e2  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  000002e2  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000314  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000060  00000000  00000000  00000350  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000007d0  00000000  00000000  000003b0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000603  00000000  00000000  00000b80  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000377  00000000  00000000  00001183  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  0000017c  00000000  00000000  000014fc  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000387  00000000  00000000  00001678  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000003fd  00000000  00000000  000019ff  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000050  00000000  00000000  00001dfc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 b8 00 	jmp	0x170	; 0x170 <__vector_1>
+   8:	0c 94 e7 00 	jmp	0x1ce	; 0x1ce <__vector_2>
+   c:	0c 94 16 01 	jmp	0x22c	; 0x22c <__vector_3>
+  10:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  14:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  18:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  1c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  20:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  24:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  28:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  2c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  30:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  34:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  38:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  3c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  40:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  44:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  48:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  4c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  50:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+  60:	0e 94 a6 00 	call	0x14c	; 0x14c <main>
+  64:	0c 94 45 01 	jmp	0x28a	; 0x28a <_exit>
+
+00000068 <__bad_interrupt>:
+  68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000006c <GPIO_init>:
+
+
+
+void GPIO_init(){
+	// LED Pins output
+	DDRD   |= (1<<5);
+  6c:	81 b3       	in	r24, 0x11	; 17
+  6e:	92 b3       	in	r25, 0x12	; 18
+  70:	80 62       	ori	r24, 0x20	; 32
+  72:	92 bb       	out	0x12, r25	; 18
+  74:	81 bb       	out	0x11, r24	; 17
+	DDRD   |= (1<<6);
+  76:	81 b3       	in	r24, 0x11	; 17
+  78:	92 b3       	in	r25, 0x12	; 18
+  7a:	80 64       	ori	r24, 0x40	; 64
+  7c:	92 bb       	out	0x12, r25	; 18
+  7e:	81 bb       	out	0x11, r24	; 17
+	DDRD   |= (1<<7);
+  80:	81 b3       	in	r24, 0x11	; 17
+  82:	92 b3       	in	r25, 0x12	; 18
+  84:	80 68       	ori	r24, 0x80	; 128
+  86:	92 bb       	out	0x12, r25	; 18
+  88:	81 bb       	out	0x11, r24	; 17
+	
+	// INT Pins input
+	DDRB   &= ~(1<<2);
+  8a:	87 b3       	in	r24, 0x17	; 23
+  8c:	98 b3       	in	r25, 0x18	; 24
+  8e:	8b 7f       	andi	r24, 0xFB	; 251
+  90:	98 bb       	out	0x18, r25	; 24
+  92:	87 bb       	out	0x17, r24	; 23
+	DDRD   &= ~(1<<2);
+  94:	81 b3       	in	r24, 0x11	; 17
+  96:	92 b3       	in	r25, 0x12	; 18
+  98:	8b 7f       	andi	r24, 0xFB	; 251
+  9a:	92 bb       	out	0x12, r25	; 18
+  9c:	81 bb       	out	0x11, r24	; 17
+	DDRD   &= ~(1<<3);
+  9e:	81 b3       	in	r24, 0x11	; 17
+  a0:	92 b3       	in	r25, 0x12	; 18
+  a2:	87 7f       	andi	r24, 0xF7	; 247
+  a4:	92 bb       	out	0x12, r25	; 18
+  a6:	81 bb       	out	0x11, r24	; 17
+  a8:	08 95       	ret
+
+000000aa <EXI_init>:
+
+
+
+void EXI_init(){
+	//External Interrupt 0 (INT0) - PD2. >> irq occur when “any logical change”
+	GICR   |= (1<<6);  //Bit 6 – INT0: External Interrupt Request 0 Enable
+  aa:	8b b7       	in	r24, 0x3b	; 59
+  ac:	9c b7       	in	r25, 0x3c	; 60
+  ae:	80 64       	ori	r24, 0x40	; 64
+  b0:	9c bf       	out	0x3c, r25	; 60
+  b2:	8b bf       	out	0x3b, r24	; 59
+	MCUCR  |= (01<<0); //0 1 Any logical change on INT0 generates an interrupt request.
+  b4:	85 b7       	in	r24, 0x35	; 53
+  b6:	96 b7       	in	r25, 0x36	; 54
+  b8:	81 60       	ori	r24, 0x01	; 1
+  ba:	96 bf       	out	0x36, r25	; 54
+  bc:	85 bf       	out	0x35, r24	; 53
+	
+	
+	//External Interrupt 1 (INT1) - PD3. >> irq occur when “rising edge”
+	GICR   |= (1<<7);  //Bit 7 – INT1: External Interrupt Request 1 Enable
+  be:	8b b7       	in	r24, 0x3b	; 59
+  c0:	9c b7       	in	r25, 0x3c	; 60
+  c2:	80 68       	ori	r24, 0x80	; 128
+  c4:	9c bf       	out	0x3c, r25	; 60
+  c6:	8b bf       	out	0x3b, r24	; 59
+	MCUCR  |= (11<<2); //1 1 The rising edge of INT1 generates an interrupt request.
+  c8:	85 b7       	in	r24, 0x35	; 53
+  ca:	96 b7       	in	r25, 0x36	; 54
+  cc:	8c 62       	ori	r24, 0x2C	; 44
+  ce:	96 bf       	out	0x36, r25	; 54
+  d0:	85 bf       	out	0x35, r24	; 53
+	
+	
+	//External Interrupt 2 (INT2) - PB2. >> irq occur when “Falling edge”
+	GICR   |= (1<<5);  //Bit 5 – INT2: External Interrupt Request 2 Enable
+  d2:	8b b7       	in	r24, 0x3b	; 59
+  d4:	9c b7       	in	r25, 0x3c	; 60
+  d6:	80 62       	ori	r24, 0x20	; 32
+  d8:	9c bf       	out	0x3c, r25	; 60
+  da:	8b bf       	out	0x3b, r24	; 59
+	MCUCSR &= ~(1<<6); //If ISC2 is written to zero, a falling edge on INT2 activates the interrupt.
+  dc:	84 b7       	in	r24, 0x34	; 52
+  de:	95 b7       	in	r25, 0x35	; 53
+  e0:	8f 7b       	andi	r24, 0xBF	; 191
+  e2:	95 bf       	out	0x35, r25	; 53
+  e4:	84 bf       	out	0x34, r24	; 52
+  e6:	08 95       	ret
+
+000000e8 <LED_ON>:
+
+
+//========================== LED ==========================
+
+void LED_ON(int led){
+	if (led == 0)
+  e8:	00 97       	sbiw	r24, 0x00	; 0
+  ea:	31 f4       	brne	.+12     	; 0xf8 <LED_ON+0x10>
+	{ 
+		PORTD   |= (1<<5);
+  ec:	82 b3       	in	r24, 0x12	; 18
+  ee:	93 b3       	in	r25, 0x13	; 19
+  f0:	80 62       	ori	r24, 0x20	; 32
+  f2:	93 bb       	out	0x13, r25	; 19
+  f4:	82 bb       	out	0x12, r24	; 18
+  f6:	08 95       	ret
+	} 
+	else if (led == 1)
+  f8:	81 30       	cpi	r24, 0x01	; 1
+  fa:	91 05       	cpc	r25, r1
+  fc:	31 f4       	brne	.+12     	; 0x10a <LED_ON+0x22>
+	{
+		PORTD   |= (1<<6);
+  fe:	82 b3       	in	r24, 0x12	; 18
+ 100:	93 b3       	in	r25, 0x13	; 19
+ 102:	80 64       	ori	r24, 0x40	; 64
+ 104:	93 bb       	out	0x13, r25	; 19
+ 106:	82 bb       	out	0x12, r24	; 18
+ 108:	08 95       	ret
+	} 
+	else if (led == 2)
+ 10a:	02 97       	sbiw	r24, 0x02	; 2
+ 10c:	29 f4       	brne	.+10     	; 0x118 <LED_ON+0x30>
+	{
+		PORTD   |= (1<<7);
+ 10e:	82 b3       	in	r24, 0x12	; 18
+ 110:	93 b3       	in	r25, 0x13	; 19
+ 112:	80 68       	ori	r24, 0x80	; 128
+ 114:	93 bb       	out	0x13, r25	; 19
+ 116:	82 bb       	out	0x12, r24	; 18
+ 118:	08 95       	ret
+
+0000011a <LED_OFF>:
+	}
+}
+
+
+void LED_OFF(int led){
+	if (led == 0)
+ 11a:	00 97       	sbiw	r24, 0x00	; 0
+ 11c:	31 f4       	brne	.+12     	; 0x12a <LED_OFF+0x10>
+	{
+		PORTD   &= ~(1<<5);
+ 11e:	82 b3       	in	r24, 0x12	; 18
+ 120:	93 b3       	in	r25, 0x13	; 19
+ 122:	8f 7d       	andi	r24, 0xDF	; 223
+ 124:	93 bb       	out	0x13, r25	; 19
+ 126:	82 bb       	out	0x12, r24	; 18
+ 128:	08 95       	ret
+	}
+	else if (led == 1)
+ 12a:	81 30       	cpi	r24, 0x01	; 1
+ 12c:	91 05       	cpc	r25, r1
+ 12e:	31 f4       	brne	.+12     	; 0x13c <LED_OFF+0x22>
+	{
+		PORTD   &= ~(1<<6);
+ 130:	82 b3       	in	r24, 0x12	; 18
+ 132:	93 b3       	in	r25, 0x13	; 19
+ 134:	8f 7b       	andi	r24, 0xBF	; 191
+ 136:	93 bb       	out	0x13, r25	; 19
+ 138:	82 bb       	out	0x12, r24	; 18
+ 13a:	08 95       	ret
+	}
+	else if (led == 2)
+ 13c:	02 97       	sbiw	r24, 0x02	; 2
+ 13e:	29 f4       	brne	.+10     	; 0x14a <LED_OFF+0x30>
+	{
+		PORTD   &= ~(1<<7);
+ 140:	82 b3       	in	r24, 0x12	; 18
+ 142:	93 b3       	in	r25, 0x13	; 19
+ 144:	8f 77       	andi	r24, 0x7F	; 127
+ 146:	93 bb       	out	0x13, r25	; 19
+ 148:	82 bb       	out	0x12, r24	; 18
+ 14a:	08 95       	ret
+
+0000014c <main>:
+
+
+int main(void)
+{
+	Clk_init();
+	GPIO_init();
+ 14c:	0e 94 36 00 	call	0x6c	; 0x6c <GPIO_init>
+	EXI_init();
+ 150:	0e 94 55 00 	call	0xaa	; 0xaa <EXI_init>
+	
+	sei(); // Enable global interrupts
+ 154:	78 94       	sei
+    while (1) 
+    {
+		//We have also 3 leds (PD5,6,7) (led0,1,2). 
+		//Each interrupt just make the led 0N for 1 sec 
+		//The main function is always make all the leds off
+		LED_OFF(0);
+ 156:	80 e0       	ldi	r24, 0x00	; 0
+ 158:	90 e0       	ldi	r25, 0x00	; 0
+ 15a:	0e 94 8d 00 	call	0x11a	; 0x11a <LED_OFF>
+		LED_OFF(1);
+ 15e:	81 e0       	ldi	r24, 0x01	; 1
+ 160:	90 e0       	ldi	r25, 0x00	; 0
+ 162:	0e 94 8d 00 	call	0x11a	; 0x11a <LED_OFF>
+		LED_OFF(2);
+ 166:	82 e0       	ldi	r24, 0x02	; 2
+ 168:	90 e0       	ldi	r25, 0x00	; 0
+ 16a:	0e 94 8d 00 	call	0x11a	; 0x11a <LED_OFF>
+ 16e:	f3 cf       	rjmp	.-26     	; 0x156 <main+0xa>
+
+00000170 <__vector_1>:
+
+
+
+//========================== ISR ==========================
+
+ISR(INT0_vect){
+ 170:	1f 92       	push	r1
+ 172:	0f 92       	push	r0
+ 174:	0f b6       	in	r0, 0x3f	; 63
+ 176:	0f 92       	push	r0
+ 178:	11 24       	eor	r1, r1
+ 17a:	2f 93       	push	r18
+ 17c:	3f 93       	push	r19
+ 17e:	4f 93       	push	r20
+ 180:	5f 93       	push	r21
+ 182:	6f 93       	push	r22
+ 184:	7f 93       	push	r23
+ 186:	8f 93       	push	r24
+ 188:	9f 93       	push	r25
+ 18a:	af 93       	push	r26
+ 18c:	bf 93       	push	r27
+ 18e:	ef 93       	push	r30
+ 190:	ff 93       	push	r31
+	LED_ON(0);
+ 192:	80 e0       	ldi	r24, 0x00	; 0
+ 194:	90 e0       	ldi	r25, 0x00	; 0
+ 196:	0e 94 74 00 	call	0xe8	; 0xe8 <LED_ON>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 19a:	2f ef       	ldi	r18, 0xFF	; 255
+ 19c:	89 e6       	ldi	r24, 0x69	; 105
+ 19e:	98 e1       	ldi	r25, 0x18	; 24
+ 1a0:	21 50       	subi	r18, 0x01	; 1
+ 1a2:	80 40       	sbci	r24, 0x00	; 0
+ 1a4:	90 40       	sbci	r25, 0x00	; 0
+ 1a6:	e1 f7       	brne	.-8      	; 0x1a0 <__vector_1+0x30>
+ 1a8:	00 c0       	rjmp	.+0      	; 0x1aa <__vector_1+0x3a>
+ 1aa:	00 00       	nop
+	_delay_ms(1000);
+}
+ 1ac:	ff 91       	pop	r31
+ 1ae:	ef 91       	pop	r30
+ 1b0:	bf 91       	pop	r27
+ 1b2:	af 91       	pop	r26
+ 1b4:	9f 91       	pop	r25
+ 1b6:	8f 91       	pop	r24
+ 1b8:	7f 91       	pop	r23
+ 1ba:	6f 91       	pop	r22
+ 1bc:	5f 91       	pop	r21
+ 1be:	4f 91       	pop	r20
+ 1c0:	3f 91       	pop	r19
+ 1c2:	2f 91       	pop	r18
+ 1c4:	0f 90       	pop	r0
+ 1c6:	0f be       	out	0x3f, r0	; 63
+ 1c8:	0f 90       	pop	r0
+ 1ca:	1f 90       	pop	r1
+ 1cc:	18 95       	reti
+
+000001ce <__vector_2>:
+
+ISR(INT1_vect){
+ 1ce:	1f 92       	push	r1
+ 1d0:	0f 92       	push	r0
+ 1d2:	0f b6       	in	r0, 0x3f	; 63
+ 1d4:	0f 92       	push	r0
+ 1d6:	11 24       	eor	r1, r1
+ 1d8:	2f 93       	push	r18
+ 1da:	3f 93       	push	r19
+ 1dc:	4f 93       	push	r20
+ 1de:	5f 93       	push	r21
+ 1e0:	6f 93       	push	r22
+ 1e2:	7f 93       	push	r23
+ 1e4:	8f 93       	push	r24
+ 1e6:	9f 93       	push	r25
+ 1e8:	af 93       	push	r26
+ 1ea:	bf 93       	push	r27
+ 1ec:	ef 93       	push	r30
+ 1ee:	ff 93       	push	r31
+	LED_ON(1);
+ 1f0:	81 e0       	ldi	r24, 0x01	; 1
+ 1f2:	90 e0       	ldi	r25, 0x00	; 0
+ 1f4:	0e 94 74 00 	call	0xe8	; 0xe8 <LED_ON>
+ 1f8:	2f ef       	ldi	r18, 0xFF	; 255
+ 1fa:	89 e6       	ldi	r24, 0x69	; 105
+ 1fc:	98 e1       	ldi	r25, 0x18	; 24
+ 1fe:	21 50       	subi	r18, 0x01	; 1
+ 200:	80 40       	sbci	r24, 0x00	; 0
+ 202:	90 40       	sbci	r25, 0x00	; 0
+ 204:	e1 f7       	brne	.-8      	; 0x1fe <__vector_2+0x30>
+ 206:	00 c0       	rjmp	.+0      	; 0x208 <__vector_2+0x3a>
+ 208:	00 00       	nop
+	_delay_ms(1000);
+}
+ 20a:	ff 91       	pop	r31
+ 20c:	ef 91       	pop	r30
+ 20e:	bf 91       	pop	r27
+ 210:	af 91       	pop	r26
+ 212:	9f 91       	pop	r25
+ 214:	8f 91       	pop	r24
+ 216:	7f 91       	pop	r23
+ 218:	6f 91       	pop	r22
+ 21a:	5f 91       	pop	r21
+ 21c:	4f 91       	pop	r20
+ 21e:	3f 91       	pop	r19
+ 220:	2f 91       	pop	r18
+ 222:	0f 90       	pop	r0
+ 224:	0f be       	out	0x3f, r0	; 63
+ 226:	0f 90       	pop	r0
+ 228:	1f 90       	pop	r1
+ 22a:	18 95       	reti
+
+0000022c <__vector_3>:
+
+ISR(INT2_vect){
+ 22c:	1f 92       	push	r1
+ 22e:	0f 92       	push	r0
+ 230:	0f b6       	in	r0, 0x3f	; 63
+ 232:	0f 92       	push	r0
+ 234:	11 24       	eor	r1, r1
+ 236:	2f 93       	push	r18
+ 238:	3f 93       	push	r19
+ 23a:	4f 93       	push	r20
+ 23c:	5f 93       	push	r21
+ 23e:	6f 93       	push	r22
+ 240:	7f 93       	push	r23
+ 242:	8f 93       	push	r24
+ 244:	9f 93       	push	r25
+ 246:	af 93       	push	r26
+ 248:	bf 93       	push	r27
+ 24a:	ef 93       	push	r30
+ 24c:	ff 93       	push	r31
+	LED_ON(2);
+ 24e:	82 e0       	ldi	r24, 0x02	; 2
+ 250:	90 e0       	ldi	r25, 0x00	; 0
+ 252:	0e 94 74 00 	call	0xe8	; 0xe8 <LED_ON>
+ 256:	2f ef       	ldi	r18, 0xFF	; 255
+ 258:	89 e6       	ldi	r24, 0x69	; 105
+ 25a:	98 e1       	ldi	r25, 0x18	; 24
+ 25c:	21 50       	subi	r18, 0x01	; 1
+ 25e:	80 40       	sbci	r24, 0x00	; 0
+ 260:	90 40       	sbci	r25, 0x00	; 0
+ 262:	e1 f7       	brne	.-8      	; 0x25c <__vector_3+0x30>
+ 264:	00 c0       	rjmp	.+0      	; 0x266 <__vector_3+0x3a>
+ 266:	00 00       	nop
+	_delay_ms(1000);
+ 268:	ff 91       	pop	r31
+ 26a:	ef 91       	pop	r30
+ 26c:	bf 91       	pop	r27
+ 26e:	af 91       	pop	r26
+ 270:	9f 91       	pop	r25
+ 272:	8f 91       	pop	r24
+ 274:	7f 91       	pop	r23
+ 276:	6f 91       	pop	r22
+ 278:	5f 91       	pop	r21
+ 27a:	4f 91       	pop	r20
+ 27c:	3f 91       	pop	r19
+ 27e:	2f 91       	pop	r18
+ 280:	0f 90       	pop	r0
+ 282:	0f be       	out	0x3f, r0	; 63
+ 284:	0f 90       	pop	r0
+ 286:	1f 90       	pop	r1
+ 288:	18 95       	reti
+
+0000028a <_exit>:
+ 28a:	f8 94       	cli
+
+0000028c <__stop_program>:
+ 28c:	ff cf       	rjmp	.-2      	; 0x28c <__stop_program>

@@ -17,7 +17,7 @@ Welcome to Mastering Embedded Systems! This comprehensive course is divided into
 
 ### Term 2
 
-- [ ] Microcontroller Architecture
+- [x] Microcontroller Architecture
 - [ ] MCU Essential Peripherals
 - [ ] MCU Interfacing
 - [ ] MCU Timers/ADC

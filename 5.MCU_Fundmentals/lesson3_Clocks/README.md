@@ -1,3 +1,5 @@
+# Clock Labs
+
 
 ## LAB1:
 - Enable the clock for PORTA
