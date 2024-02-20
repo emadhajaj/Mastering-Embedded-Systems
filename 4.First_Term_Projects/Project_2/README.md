@@ -40,3 +40,10 @@ This student management system provides the following options to the user:
 9. Show all information
     - This option will display all information about all enrolled students.
 
+### Building and Usage
+To compile and execute the program, users can follow these steps:
+
+1. Open the terminal or command prompt.
+2. Navigate to the directory containing the C file.
+3. Compile the code using a C compiler with the command: `gcc -o outname filename.c`.
+4. Run the compiled program using the command: `./outname`.

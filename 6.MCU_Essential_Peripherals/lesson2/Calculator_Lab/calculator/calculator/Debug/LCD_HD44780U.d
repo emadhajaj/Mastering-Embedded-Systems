@@ -1,0 +1,6 @@
+LCD_HD44780U.d LCD_HD44780U.o: .././LCD_HD44780U.c .././LCD_HD44780U.h \
+ .././UTILS.h
+
+.././LCD_HD44780U.h:
+
+.././UTILS.h:
