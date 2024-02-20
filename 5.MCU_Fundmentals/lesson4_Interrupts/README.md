@@ -1,7 +1,7 @@
 # Interrupts Labs
 
 # Lab1
-- Write C Code to enable Ext Interrupt for Stm32F103XX
+- Write C Code to enable Ext Interrupt for **Stm32F103XX**
 - Functions
     - Clock initialization (clock_Init) enables clock signals for the I/O port A and Alternate Function I/O.
     - GPIO initialization (gpio_Init) configures PortA Pin 13 as output and PortA Pin 0 as input with floating input.
