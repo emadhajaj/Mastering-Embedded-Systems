@@ -46,7 +46,7 @@ The linker script defines several output sections to organize the firmware image
 ## Makefile
 This project defines various symbols that are used in the building process of an Arm Cortex-M3 based microcontroller firmware.
 
-####Symbols
+#### Symbols
 CC          : Defines the compiler toolchain (arm-none-eabi-).
 CFLAGS      : Compiler flags include optimization for the Cortex-M3 (-mcpu=cortex-m3).
 INCS        : Specifies the include directories (-I . for the current directory).

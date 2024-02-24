@@ -37,8 +37,9 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../KEYPAD_4x4.c \
-../LCD_HD44780U.c \
+../ATMega32_DIO_program.c \
+../KEYPAD_4x4_programe.c \
+../LCD_HD44780U_program.c \
 ../main.c
 
 
@@ -49,23 +50,27 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-KEYPAD_4x4.o \
-LCD_HD44780U.o \
+ATMega32_DIO_program.o \
+KEYPAD_4x4_programe.o \
+LCD_HD44780U_program.o \
 main.o
 
 OBJS_AS_ARGS +=  \
-KEYPAD_4x4.o \
-LCD_HD44780U.o \
+ATMega32_DIO_program.o \
+KEYPAD_4x4_programe.o \
+LCD_HD44780U_program.o \
 main.o
 
 C_DEPS +=  \
-KEYPAD_4x4.d \
-LCD_HD44780U.d \
+ATMega32_DIO_program.d \
+KEYPAD_4x4_programe.d \
+LCD_HD44780U_program.d \
 main.d
 
 C_DEPS_AS_ARGS +=  \
-KEYPAD_4x4.d \
-LCD_HD44780U.d \
+ATMega32_DIO_program.d \
+KEYPAD_4x4_programe.d \
+LCD_HD44780U_program.d \
 main.d
 
 OUTPUT_FILE_PATH +=calculator.elf
@@ -82,14 +87,21 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-./KEYPAD_4x4.o: .././KEYPAD_4x4.c
+./ATMega32_DIO_program.o: .././ATMega32_DIO_program.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)E:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"E:\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "E:\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-./LCD_HD44780U.o: .././LCD_HD44780U.c
+./KEYPAD_4x4_programe.o: .././KEYPAD_4x4_programe.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)E:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"E:\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "E:\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./LCD_HD44780U_program.o: .././LCD_HD44780U_program.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)E:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"E:\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "E:\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
