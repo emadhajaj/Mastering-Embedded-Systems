@@ -2,6 +2,9 @@
 
 The calculator does not deal with decimals, it will **only take integers and show integers**
 
+![2-24-2024 (08-06-03)](https://github.com/emadhajaj/Mastering-Embedded-Systems/assets/106942924/34bf2a23-07d1-406b-85f1-1fe1656214cd)
+
+
 ## Overview
 The calculator.c program is a simple calculator application designed to run on an ATmega32 microcontroller. It utilizes a 4x4 keypad for input and an HD44780-based LCD for displaying results. The calculator supports basic arithmetic operations such as addition, subtraction, multiplication, and division.
 
